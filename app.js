@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const socketIO = require("socket.io");
-const {generateMessage} = require("./server/utils/message");
+const {generateMessage, generateLocationMessage} = require("./server/utils/message");
 
 // using path module to access public folder
 const publicPath = path.join(__dirname, "/public");
@@ -33,6 +33,10 @@ io.on("connection", function(socket) {
         // Passing the gathered data from user variable which is newMsg to all other users connected.
         io.emit("newMessage", generateMessage(newMsg.from, newMsg.text));
         callback("This is from server");
+    });
+
+    socket.on("createLocationMessage", function(coords) {
+        io.emit("newLocationMessage", generateLocationMessage("Admin", coords.latitude, coords.longitude));
     });
 
     socket.on("disconnect", function() {
