@@ -32,7 +32,7 @@ io.on("connection", function(socket) {
 
         // Passing the gathered data from user variable which is newMsg to all other users connected.
         io.emit("newMessage", generateMessage(newMsg.from, newMsg.text));
-        callback("This is from server");
+        callback();
     });
 
     socket.on("createLocationMessage", function(coords) {

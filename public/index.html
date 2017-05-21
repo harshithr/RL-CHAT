@@ -1,19 +1,29 @@
 <html>
     <head>
         <title>RL-CHAT</title>
+        <link rel="stylesheet" href="/css/styles.css" />
     </head>
-    <body>
-        <h1>Welcome to RL-CHAT</h1>
+    <body class="chat">
 
-        <form id="message-form">
-            <input name="message" type="text" placeholder="Type message"/>
+        <div class="chat__sidebar">
+            <h3>People</h3>
+            <div  id="users"></div>
+        </div>
 
-            <button>Send</button>
-        </form>
+        <div class="chat__main">
 
-        <button id="send-location">Send Location</button>
+            <ol id="messagesList" class="chat__messages"></ol>
 
-        <ol id="messagesList"></ol>
+            <div class="chat__footer">
+                <form id="message-form">
+                    <input name="message" type="text" placeholder="Type message" autofocus autocomplete="off"/>
+                    <button>Send</button>
+                </form>
+                <button id="send-location">Send location</button>
+
+            </div>
+
+        </div>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/libs/jquery-3.2.1.min.js"></script>
